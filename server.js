@@ -14,6 +14,16 @@ app.get("/", (req, res) => {
   });
 });
 
+app.get("/:currywurst", (req, res, next) => {
+  const id = req.params.currywurst;
+  Student.findById(id)
+    .then((data) => {
+      res.send(data);
+    })
+    .catch(() => {
+      next();
+    });
+});
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
 });
