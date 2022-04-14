@@ -10,8 +10,21 @@ POST http://localhost:3000/
 content-type: application/json
 
 {
-    "name": "Martin Földi",
+    "name": "Martin PAgels",
+    "age": 100,
+    "points": 100,
+    "happiness" : 10
+}
 
+###
+DELETE http://localhost:3000/6257e8f4c55a8d6d1c4db3bb HTTP/1.1
+
+###
+
+PATCH http://localhost:3000/6257e8f4c55a8d6d1c4db3bb HTTP/1.1
+content-type: application/json
+
+{
     "points": 100,
     "happiness" : 10
 }

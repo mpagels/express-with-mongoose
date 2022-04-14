@@ -44,6 +44,29 @@ app.post("/", (req, res) => {
     });
 });
 
+app.delete("/:currywurst", (req, res, next) => {
+  const id = req.params.currywurst;
+  Student.findByIdAndDelete(id)
+    .then((data) => {
+      res.status(200).send(data);
+    })
+    .catch(() => {
+      next();
+    });
+});
+
+app.patch("/:currywurst", (req, res, next) => {
+  const id = req.params.currywurst;
+  const updatedObject = req.body;
+  Student.findByIdAndUpdate(id, { ...updatedObject }, { new: true })
+    .then((data) => {
+      res.status(200).send(data);
+    })
+    .catch(() => {
+      next();
+    });
+});
+
 app.use((req, res, next) => {
   res.status(400).send("ERROR JUNGE");
 });
