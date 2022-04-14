@@ -8,6 +8,8 @@ const port = 3000;
 
 mongoose.connect("mongodb://localhost:27017/neuefische");
 
+app.use(express.json());
+
 app.get("/", (req, res) => {
   Student.find({}).then((data) => {
     res.send(data);
@@ -22,6 +24,23 @@ app.get("/:currywurst", (req, res, next) => {
     })
     .catch(() => {
       next();
+    });
+});
+
+app.post("/", (req, res) => {
+  const name = req.body.name;
+  const age = req.body.age;
+  const points = req.body.points;
+  const happiness = req.body.happiness;
+
+  const newStudent = Student({ name: name, age: age, points, happiness });
+  newStudent
+    .save()
+    .then((data) => {
+      res.status(201).send(data);
+    })
+    .catch((error) => {
+      res.status(400).json({ error: error.message });
     });
 });
 

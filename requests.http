@@ -3,3 +3,15 @@ GET http://localhost:3000/ HTTP/1.1
 ###
 
 GET http://localhost:3000/martin HTTP/1.1
+
+###
+
+POST http://localhost:3000/
+content-type: application/json
+
+{
+    "name": "Martin Földi",
+
+    "points": 100,
+    "happiness" : 10
+}
