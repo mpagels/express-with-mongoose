@@ -24,6 +24,11 @@ app.get("/:currywurst", (req, res, next) => {
       next();
     });
 });
+
+app.use((req, res, next) => {
+  res.status(400).send("ERROR JUNGE");
+});
+
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
 });
