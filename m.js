@@ -27,7 +27,7 @@ mongoose.connect("mongodb://localhost:27017/neuefische").then(() => {
 
   // create a student and save in database
 
-  const newStudent = Student({
+  /*   const newStudent = Student({
     name: "Alex",
     age: 18,
     points: 0,
@@ -35,6 +35,13 @@ mongoose.connect("mongodb://localhost:27017/neuefische").then(() => {
   });
 
   newStudent.save().then((data) => {
+    console.log(data);
+    process.exit();
+  }); */
+
+  // delete a student
+
+  Student.findByIdAndDelete("6257d8a614334ba0ed7fbda5").then((data) => {
     console.log(data);
     process.exit();
   });
