@@ -1,10 +1,10 @@
 const mongoose = require("mongoose");
 
 const studentSchema = mongoose.Schema({
-  name: String,
-  age: Number,
-  points: Number,
-  happiness: Number,
+  name: { type: String, required: true },
+  age: { type: Number, required: true },
+  points: { type: Number, default: 0 },
+  happiness: { type: Number, default: 0 },
 });
 
 const Student = mongoose.model("student", studentSchema);
@@ -20,29 +20,28 @@ mongoose.connect("mongodb://localhost:27017/neuefische").then(() => {
 
   // get a student by id
 
-  /*  Student.findById("625753923730a4b24b5ce9eb").then((data) => {
-    console.log(data);
-    process.exit();
-  }); */
+  /*   Student.findById("625753923730a4b24b5ce9e")
+    .then((data) => {
+      console.log(data);
+      process.exit();
+    })
+    .catch((error) => {
+      console.log("ERROR");
+    }); */
 
   // create a student and save in database
 
-  /*   const newStudent = Student({
-    name: "Alex",
-    age: 18,
-    points: 0,
-    happiness: 8,
-  });
+  const newStudent = Student({ name: "TestPerson3", age: 15 });
 
   newStudent.save().then((data) => {
     console.log(data);
     process.exit();
-  }); */
+  });
 
   // delete a student
 
-  Student.findByIdAndDelete("6257d8a614334ba0ed7fbda5").then((data) => {
+  /*   Student.findByIdAndDelete("6257d8a614334ba0ed7fbda5").then((data) => {
     console.log(data);
     process.exit();
-  });
+  }); */
 });
